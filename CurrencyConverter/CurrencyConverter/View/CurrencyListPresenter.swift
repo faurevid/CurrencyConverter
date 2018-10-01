@@ -73,11 +73,12 @@ extension CurrencyListPresenter: CurrencyListPresenterProtocol{
             cell.currencyCode.text = currentCurrency.code
             cell.currencyName.text = dataManager.getCurrencyName(fromCode: currentCurrency.code)
             cell.convertionAmount.text = String(format: "%.2f",currentCurrency.rate)
+            cell.backgroundColor = UIColor.lightGray
             
         }
         else{
         let currency = currencyList[atIndexPath.row - 1]
-        
+        cell.backgroundColor = UIColor.white
         cell.currencyCode.text = currency.code
             cell.currencyName.text = dataManager.getCurrencyName(fromCode: currency.code)
         cell.convertionAmount.text = String(format: "%.2f", currency.rate * currentCurrency.rate)
