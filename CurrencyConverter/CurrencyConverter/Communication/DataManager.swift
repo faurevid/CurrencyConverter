@@ -37,7 +37,10 @@ static let urlString = "https://revolut.duckdns.org/latest?base=%@"
    func getCurrencyName(fromCode: String) -> String{
     if let path = Bundle.main.path(forResource: "Currencies", ofType: "plist"),
         let myDict = NSDictionary(contentsOfFile: path){
-        return myDict.value(forKey: fromCode) as! String
+        guard let value = myDict.value(forKey: fromCode) else{
+            return ""
+        }
+        return value as! String
     }
     return ""
     }
